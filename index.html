@@ -27,10 +27,14 @@
         <h2 class="visually-hidden">ToDo List</h2>
         <div class="todo__inner container">
           <div class="task-add">
-            <label for="task-name" class="visually-hidden">Task name</label>
-            <input class="task-add__input input-reset" type="text" id="task-name" placeholder="Write your task...">
+            <label class="visually-hidden" for="task-name">Task name</label>
+            <input class="task-add__input input-reset input" type="text" id="task-name"
+              placeholder="Write your task...">
             <button class="task-add__btn btn-reset" type="submit">-></button>
           </div>
+          <search class="search">
+            <input class="search__input input input-reset" placeholder="Find the task" type="text">
+          </search>
           <ul class="list-reset todo-list__list list"></ul>
         </div>
       </section>

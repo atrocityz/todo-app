@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  row-gap: 30px;
+  row-gap: 20px;
   min-height: calc(100vh - var(--header-height) - var(--section-padding-y));
   padding-top: var(--section-padding-y);
 }
@@ -17,21 +17,10 @@
   justify-content: center;
   column-gap: 5px;
   width: 100%;
-  animation: 1s ease-in-out animateUpBouncy;
 }
 
 .task-add__input {
   flex-grow: 0.3;
-  border-radius: 0.375rem;
-  padding-inline: 20px;
-  height: var(--input-height);
-  color: var(--light-color);
-  backdrop-filter: blur(32px);
-  background-color: #31303030;
-}
-
-.task-add__input::placeholder {
-  color: gray;
 }
 
 .task-add__btn {
@@ -49,13 +38,8 @@
   transition: color 300ms ease;
 }
 
-.task-add__btn:focus,
-.task-add__input:focus {
+.task-add__btn:focus {
   outline: none;
-}
-
-.task-add__input:focus {
-  outline: 2px solid var(--blue-color);
 }
 
 .task-add__btn:focus-visible {

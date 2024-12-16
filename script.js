@@ -5,27 +5,48 @@ import {
 } from "./utils.js";
 
 const addTaskBtn = document.querySelector(".task-add__btn");
-const input = document.querySelector(".task-add__input");
+const addTaskInput = document.querySelector(".task-add__input");
 const todoTemplate = document.querySelector(".todo-template");
 const todoListContainer = document.querySelector(".todo-list__list");
+const searchTaskInput = document.querySelector(".search__input");
 
 let taskList = getTasksFromLocalStorage();
+let filteredTaskList = [];
 
 addTaskBtn.addEventListener("click", () => {
-  if (input.value.trim()) {
+  if (addTaskInput.value.trim()) {
     const newTask = {
       id: Date.now(),
-      text: input.value.trim(),
+      text: addTaskInput.value.trim(),
       completed: false,
       createdAt: getDateRepresentation(new Date()),
     };
     taskList.push(newTask);
-    input.value = "";
+    addTaskInput.value = "";
 
     saveTasksIntoLocalStorage(taskList);
     renderTaskList();
   }
 });
+
+addTaskInput.addEventListener("input", () => {
+  if (searchTaskInput.value.trim()) {
+    searchTaskInput.value = "";
+    renderTaskList();
+  }
+});
+
+searchTaskInput.addEventListener("input", (e) => {
+  filterAndRenderFilteredTaskList(e.target.value.trim());
+  renderFilteredTaskList();
+});
+
+const filterAndRenderFilteredTaskList = (searchValue) => {
+  filteredTaskList = taskList.filter((t) => {
+    return t.text.includes(searchValue);
+  });
+  renderFilteredTaskList();
+};
 
 const createTodoLayout = (task) => {
   const todoElement = document.importNode(todoTemplate.content, true);
@@ -50,7 +71,12 @@ const createTodoLayout = (task) => {
       return t;
     });
     saveTasksIntoLocalStorage(taskList);
-    renderTaskList();
+
+    if (searchTaskInput.value.trim()) {
+      filterAndRenderFilteredTaskList(searchTaskInput.value.trim());
+    } else {
+      renderTaskList();
+    }
   });
 
   removeTodoBtn.addEventListener("click", () => {
@@ -60,10 +86,28 @@ const createTodoLayout = (task) => {
       }
     });
     saveTasksIntoLocalStorage(taskList);
-    renderTaskList();
+
+    if (searchTaskInput.value.trim()) {
+      filterAndRenderFilteredTaskList(searchTaskInput.value.trim());
+    } else {
+      renderTaskList();
+    }
   });
 
   return todoElement;
+};
+
+const renderFilteredTaskList = () => {
+  todoListContainer.innerHTML = "";
+
+  if (filteredTaskList.length === 0) {
+    todoListContainer.innerHTML = "<h3>Task not found...</h3>";
+  }
+
+  filteredTaskList.forEach((task) => {
+    const todoElement = createTodoLayout(task);
+    todoListContainer.append(todoElement);
+  });
 };
 
 const renderTaskList = () => {

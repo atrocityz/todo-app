@@ -2,8 +2,9 @@
 @import url(styles/vars.css);
 @import url(styles/fonts.css);
 @import url(styles/settings.css);
-@import url(styles/styles.css);
+@import url(styles/input.css);
 @import url(styles/animates.css);
 @import url(styles/header.css);
 @import url(styles/todo.css);
 @import url(styles/list.css);
+@import url(styles/search.css);

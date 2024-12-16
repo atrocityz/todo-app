@@ -3,7 +3,6 @@
   flex-direction: column;
   margin: 0 auto;
   row-gap: 20px;
-  animation: 1s ease-in-out animateUpBouncy;
 }
 
 .list__item {
@@ -23,6 +22,7 @@
   min-width: 18px;
   aspect-ratio: 1;
   accent-color: #3b8132;
+  cursor: pointer;
 }
 
 .item__checkbox:checked ~ .item__info .item__info-text {
