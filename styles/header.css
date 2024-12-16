@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  min-height: var(--header-height);
+  background-color: var(--gray-color);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  animation: 1s ease-in-out animateUpBouncy;
+}
+
+.header__title {
+  margin: 0;
+  font-size: clamp(32px, 2.18vw, 42px);
+  font-weight: 700;
+  color: var(--light-color);
+}
+
+.logo {
+  max-width: clamp(40px, 2.71vw, 52px);
+}

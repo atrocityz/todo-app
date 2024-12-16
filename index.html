@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="page">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <title>ToDo App</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="script.js" defer type="module"></script>
+  <script src="utils.js" defer type="module"></script>
+</head>
+
+<body class="page__body">
+  <div class="site-container">
+    <header class="header">
+      <div class="header__inner container">
+        <a class="logo">
+          <img src="favicon.png" width="52" height="52" loading="lazy" alt="Logo">
+        </a>
+        <h1 class="header__title">ToDo App</h1>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="todo">
+        <h2 class="visually-hidden">ToDo List</h2>
+        <div class="todo__inner container">
+          <div class="task-add">
+            <label for="task-name" class="visually-hidden">Task name</label>
+            <input class="task-add__input input-reset" type="text" id="task-name" placeholder="Write your task...">
+            <button class="task-add__btn btn-reset" type="submit">-></button>
+          </div>
+          <ul class="list-reset todo-list__list list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"></footer>
+  </div>
+
+  <template class="todo-template">
+    <li class="list__item item">
+      <input type="checkbox" class="item__checkbox">
+      <div class="item__info">
+        <p class="item__info-text">text</p>
+        <time class="item__info-date">date</time>
+      </div>
+      <button class="item__btn btn-reset btn--remove" disabled>
+        <svg width="34" height="34" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.11 2.697L2.698 4.11 6.586 8l-3.89 3.89 1.415 1.413L8 9.414l3.89 3.89 1.413-1.415L9.414 8l3.89-3.89-1.415-1.413L8 6.586l-3.89-3.89z">
+          </path>
+        </svg>
+      </button>
+    </li>
+  </template>
+
+</body>
+
+</html>

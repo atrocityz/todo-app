@@ -1,0 +1,14 @@
+:root {
+  --font-family: "JetBrains Mono";
+  --container-offset: 15px;
+  --container-width: 1240px;
+  --header-height: clamp(52px, 6.46vw, 124px);
+  --input-height: 40px;
+  --section-padding-y: clamp(40px, 3.65vw, 70px);
+
+  --light-color: #fff;
+  --dark-color: #000;
+  --accent-color: #c5d1eb;
+  --blue-color: #92aed6;
+  --gray-color: #5a7684;
+}
