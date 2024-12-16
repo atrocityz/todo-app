@@ -38,7 +38,10 @@ addTaskInput.addEventListener("input", () => {
 
 searchTaskInput.addEventListener("input", (e) => {
   filterAndRenderFilteredTaskList(e.target.value.trim());
-  renderFilteredTaskList();
+
+  if (!searchTaskInput.value.trim()) {
+    renderTaskList();
+  }
 });
 
 const filterAndRenderFilteredTaskList = (searchValue) => {
