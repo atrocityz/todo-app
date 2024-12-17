@@ -10,6 +10,13 @@ const todoTemplate = document.querySelector(".todo-template");
 const todoListContainer = document.querySelector(".todo-list__list");
 const searchTaskInput = document.querySelector(".search__input");
 
+const countContainerCompleted = document.querySelector(
+  ".counter__tasks-completed"
+);
+const countContainerUncompleted = document.querySelector(
+  ".counter__tasks-uncompleted"
+);
+
 let taskList = getTasksFromLocalStorage();
 let filteredTaskList = [];
 
@@ -21,7 +28,7 @@ addTaskBtn.addEventListener("click", () => {
       completed: false,
       createdAt: getDateRepresentation(new Date()),
     };
-    taskList.push(newTask);
+    taskList.unshift(newTask);
     addTaskInput.value = "";
 
     saveTasksIntoLocalStorage(taskList);
@@ -43,6 +50,10 @@ searchTaskInput.addEventListener("input", (e) => {
     renderTaskList();
   }
 });
+
+const filterTaskCompletedAndUncompleted = (todoList) => {
+  todoList = todoList.sort((a, b) => a.completed - b.completed);
+};
 
 const filterAndRenderFilteredTaskList = (searchValue) => {
   filteredTaskList = taskList.filter((t) => {
@@ -104,8 +115,13 @@ const renderFilteredTaskList = () => {
   todoListContainer.innerHTML = "";
 
   if (filteredTaskList.length === 0) {
+    countContainerCompleted.textContent = 0;
+    countContainerUncompleted.textContent = 0;
     todoListContainer.innerHTML = "<h3>Task not found...</h3>";
   }
+
+  filterTaskCompletedAndUncompleted(filteredTaskList);
+  countTasks(filteredTaskList);
 
   filteredTaskList.forEach((task) => {
     const todoElement = createTodoLayout(task);
@@ -113,12 +129,34 @@ const renderFilteredTaskList = () => {
   });
 };
 
+const countTasks = (todoList) => {
+  let countCompleted = 0;
+  let countUncompleted = 0;
+
+  todoList.forEach((task) => {
+    if (task.completed) {
+      countCompleted++;
+    }
+
+    if (!task.completed) {
+      countUncompleted++;
+    }
+  });
+
+  countContainerCompleted.textContent = countCompleted;
+  countContainerUncompleted.textContent = countUncompleted;
+};
+
 const renderTaskList = () => {
   todoListContainer.innerHTML = "";
-
   if (taskList.length === 0) {
+    countContainerCompleted.textContent = 0;
+    countContainerUncompleted.textContent = 0;
     todoListContainer.innerHTML = "<h3>ToDo List is empty...</h3>";
   }
+
+  filterTaskCompletedAndUncompleted(taskList);
+  countTasks(taskList);
 
   taskList.forEach((task) => {
     const todoElement = createTodoLayout(task);

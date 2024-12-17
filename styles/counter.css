@@ -1,0 +1,24 @@
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.counter__tasks {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.counter__tasks--completed {
+  color: #3b8132;
+}
+
+.counter__tasks--uncompleted {
+  color: rgb(232, 232, 118);
+}
+
+@media screen and (max-width: 427px) {
+  .counter {
+    justify-content: space-between;
+  }
+}
