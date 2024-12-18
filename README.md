@@ -1,5 +1,7 @@
 # ToDo App
 
+<img src="todo-app_preview.png" width="530">
+
 ### Functionality
 
 - Tasks are stored in window.localStorage.
@@ -13,3 +15,4 @@
 - [x] Add filtering by completed and uncompleted tasks
 - [x] Add a count of completed and uncompleted tasks
 - [ ] Add several animations for elements
+- [ ] Make custom checkbox with default checkbox in html (mask, appearance:none)
