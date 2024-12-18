@@ -1,6 +1,8 @@
 # ToDo App
 
-<img src="todo-app_preview.png" width="530">
+<div align="center">
+  <img src="todo-app_preview.png" width="830">
+</div>
 
 ### Functionality
 
