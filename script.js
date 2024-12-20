@@ -20,7 +20,7 @@ const countContainerUncompleted = document.querySelector(
 let taskList = getTasksFromLocalStorage();
 let filteredTaskList = [];
 
-addTaskBtn.addEventListener("click", () => {
+const addNewTask = () => {
   if (addTaskInput.value.trim()) {
     const newTask = {
       id: Date.now(),
@@ -34,12 +34,22 @@ addTaskBtn.addEventListener("click", () => {
     saveTasksIntoLocalStorage(taskList);
     renderTaskList();
   }
+};
+
+addTaskBtn.addEventListener("click", () => {
+  addNewTask();
 });
 
 addTaskInput.addEventListener("input", () => {
   if (searchTaskInput.value.trim()) {
     searchTaskInput.value = "";
     renderTaskList();
+  }
+});
+
+addTaskInput.addEventListener("keypress", (e) => {
+  if (e.code === "Enter") {
+    addNewTask();
   }
 });
 
